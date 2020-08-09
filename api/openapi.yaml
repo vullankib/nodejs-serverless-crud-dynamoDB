@@ -1,0 +1,154 @@
+openapi: 3.0.0
+info:
+  title: Bharath Resume
+  description: Showcase workexperience in OAS format
+  contact:
+    name: Bharath
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: "1.0"
+servers:
+- url: http://localhost:3000
+tags:
+- name: Basic Information
+paths:
+  /basics:
+    get:
+      tags:
+      - Basic Information
+      summary: Basic profile Information
+      description: Basic profile Information
+      operationId: getBasics
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+              examples:
+                example-1:
+                  value:
+                    basics:
+                      name: John Doe
+                      label: Programmer
+                      picture: ""
+                      email: john@gmail.com
+                      phone: (912) 555-4321
+                      website: http://johndoe.com
+                      location:
+                        address: 2712 Broadway St
+                        postalCode: CA 94115
+                        city: San Francisco
+                        countryCode: US
+                        region: California
+                      profiles:
+                      - network: Twitter
+                        username: john
+                        url: http://twitter.com/john
+      x-swagger-router-controller: BasicInformation
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        label:
+          type: string
+        picture:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        website:
+          type: string
+      example:
+        website: website
+        phone: phone
+        name: name
+        id: id
+        label: label
+        picture: picture
+        email: email
+    Location:
+      title: Location
+      type: object
+      properties:
+        id:
+          type: string
+        address:
+          type: string
+        postcalCode:
+          type: number
+        city:
+          type: string
+        countryCode:
+          type: string
+        region:
+          type: string
+      example:
+        address: address
+        city: city
+        postcalCode: 0.80082819046101150206595775671303272247314453125
+        countryCode: countryCode
+        id: id
+        region: region
+    Profiles:
+      title: Profiles
+      type: object
+      properties:
+        id:
+          type: string
+        network:
+          type: string
+        username:
+          type: string
+        url:
+          type: string
+      example:
+        id: id
+        url: url
+        network: network
+        username: username
+    inline_response_200:
+      type: object
+      properties:
+        basics:
+          $ref: '#/components/schemas/User'
+        location:
+          $ref: '#/components/schemas/Location'
+        profiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Profiles'
+      example:
+        basics:
+          website: website
+          phone: phone
+          name: name
+          id: id
+          label: label
+          picture: picture
+          email: email
+        profiles:
+        - id: id
+          url: url
+          network: network
+          username: username
+        - id: id
+          url: url
+          network: network
+          username: username
+        location:
+          address: address
+          city: city
+          postcalCode: 0.80082819046101150206595775671303272247314453125
+          countryCode: countryCode
+          id: id
+          region: region

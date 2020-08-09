@@ -1,0 +1,22 @@
+{
+  "name": "bharath-resume",
+  "version": "1.0.0",
+  "description": "Showcase workexperience in OAS format",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "nodemon": "^2.0.4",
+    "oas3-tools": "^2.0.2",
+    "uuid": "^2.0.3"
+  }
+}
